@@ -23,6 +23,7 @@ def createDataSet():
 	labels=['no surfacing','flippers']
 	return dataSet,labels
 
+#选取集合中第axis个特征等于value的所有实例（元素），形成一个子列表retDataSet
 def splitDataSet(dataSet,axis,value):
 	retDataSet=[]
 	for featVec in dataSet:

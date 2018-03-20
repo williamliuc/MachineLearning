@@ -35,8 +35,7 @@ def splitDataSet(dataSet,axis,value):
 
 #遍历实例中的每一个特征，将每一个特征划分后的集合的熵进行比较，选取熵最小的划分，返回决定熵最小划分的特征值的序号
 def chooseBestFeatureToSplit(dataSet):
-	numFeatures=len(dataSet[0])-1
-	print(numFeatures)
+	numFeatures=len(dataSet[0])-1#获取集合中特征个数
 	shang=calcuXiangNongShang(dataSet)
 	print("原始熵")
 	print(shang)
@@ -63,6 +62,5 @@ if __name__=='__main__':
 	dataSet,labels=createDataSet()
 	print(labels)
 	print(dataSet)
-	print("aaa")
 	bestFeature=chooseBestFeatureToSplit(dataSet)
 	print(bestFeature)

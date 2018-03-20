@@ -18,6 +18,7 @@ def calcuXiangNongShang(dataSet):
 		shang-=prob*log(prob,2)	
 	print(shang)
 
+#创建数据集，数据集必须为列表，所有列表实例都要具有相同的数据长度，每个实例的最后一个元素是当前实例的类别标签
 def createDataSet():
 	dataSet=[[1,1,'ha89'],[1,1,'ha7'],[1,0,'ha8'],[0,1,'ha3'],[0,1,'ha17'],[1,2,'ha18'],[1,3,'ha2'],[1,5,'ha26a'],[1,1,'ha89a'],[1,1,'ha72a'],[1,0,'ha823a'],[0,1,'ha33a'],[0,1,'ha173a'],[1,2,'ha182a'],[1,3,'ha22a'],[1,5,'ha261a']]
 	labels=['no surfacing','flippers']

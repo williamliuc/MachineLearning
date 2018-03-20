@@ -1,3 +1,4 @@
+#选择最优的特征来进行决策树的划分，使其熵最小
 from math import log
 import sys
 
@@ -31,6 +32,7 @@ def splitDataSet(dataSet,axis,value):
 			retDataSet.append(reduceFeatVec)
 	return retDataSet
 
+#遍历实例中的每一个特征，将每一个特征划分后的集合的熵进行比较，选取熵最小的划分，返回决定熵最小划分的特征值的序号
 def chooseBestFeatureToSplit(dataSet):
 	numFeatures=len(dataSet[0])-1
 	print(numFeatures)
@@ -39,21 +41,21 @@ def chooseBestFeatureToSplit(dataSet):
 	print(shang)
 	bestInfo=0.0
 	bestFeature=-1
-	for i in range(numFeatures):
+	for i in range(numFeatures):#遍历每一个特征
 		featList=[example[i] for example in dataSet]
-		uniqueVals=set(featList)
+		uniqueVals=set(featList)#统计第i个特征的不同值
 		newShang=0.0
-		for value in uniqueVals:
+		for value in uniqueVals:#统计第i个特征划分后集合的熵，存入newShang。比如此特征将集合划分为两类，划分后的熵=第一类的熵*第一类元素比例+第二类的熵*第二类元素比例
 			subDataSet=splitDataSet(dataSet,i,value)
 			prob=len(subDataSet)/float(len(dataSet))
 			newShang+=prob*calcuXiangNongShang(subDataSet)
 		infoGain=shang-newShang
 		print("按第"+str(i)+"个特征划分后的熵")
 		print(newShang)
-		if(infoGain>bestInfo):
+		if(infoGain>bestInfo):#选择最小的划分后的熵
 			bestInfo=infoGain
 			bestFeature=i
-	return bestFeature
+	return bestFeature #返回最好特征的序号
 	
 
 if __name__=='__main__':

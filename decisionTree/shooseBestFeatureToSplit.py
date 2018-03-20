@@ -1,7 +1,7 @@
-#计算给定数据集的香农熵
 from math import log
 import sys
 
+#计算给定数据集的香农熵
 def calcuXiangNongShang(dataSet):
 	num=len(dataSet)
 	labelCounts={}
@@ -16,6 +16,7 @@ def calcuXiangNongShang(dataSet):
 		shang-=prob*log(prob,2)	
 	return shang
 
+#创建数据集，数据集必须为列表，所有列表实例都要具有相同的数据长度，每个实例的最后一个元素是当前实例的类别标签
 def createDataSet():
 	dataSet=[[1,1,'yes'],[1,1,'yes'],[1,0,'no'],[0,0,'no'],[0,1,'no'],[1,0,'yess']]
 	labels=['no surfacing','flippers']

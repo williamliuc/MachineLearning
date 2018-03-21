@@ -88,7 +88,7 @@ def createTree(dataSet,labels):
 	for value in uniqueVals:
 		subLabels=labels[:]#python中传递列表是传递引用，为了不让后面的递归函数改变这里labels中的值，我们复制一份，传递sublabels
 		myTree[bestFeatLabel][value]=createTree(splitDataSet(dataSet,bestFeat,value),subLabels)   
-	return myTree
+	return myTree   
 
 #主函数
 if __name__=='__main__': 

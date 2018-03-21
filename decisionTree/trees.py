@@ -6,7 +6,7 @@
 from math import log
 import operator  
 
-#创建数据集，返回值：数据集，类标签（特征的表现）yes：鱼类，no：非鱼类，1：是，0：否
+#创建数据集，返回值：数据集，类标签（特征的表现）。yes：鱼类。no：非鱼类。1：是，0：否
 def createDataSet():
 	dataSet=[[1,1,'yes'],[1,1,'yes'],[1,0,'no'],[0,0,'no'],[0,1,'no']]
 	labels=['no surfacing','flippers']

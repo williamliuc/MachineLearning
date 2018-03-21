@@ -90,6 +90,7 @@ def createTree(dataSet,labels):
 		myTree[bestFeatLabel][value]=createTree(splitDataSet(dataSet,bestFeat,value),subLabels)   
 	return myTree
 
+#主函数
 if __name__=='__main__': 
 	dataSet,labels=createDataSet()
 	myTree=createTree(dataSet,labels)

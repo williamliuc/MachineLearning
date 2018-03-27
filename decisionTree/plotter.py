@@ -1,5 +1,5 @@
 #根据坐标点画图的第一个版本，可实现带箭头的注解绘制功能
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt  
 
 #定义文本框和箭头格式
 decisionNode=dict(boxstyle="sawtooth",fc="0.8")

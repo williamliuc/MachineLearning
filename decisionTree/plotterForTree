@@ -1,7 +1,7 @@
 #在python中使用matplotlib注解绘制树形图
 import matplotlib.pyplot as plt  
 
-#定义文本框和箭头格式
+#定义文本框和箭头格式 
 decisionNode=dict(boxstyle="sawtooth",fc="0.8") 
 leafNode=dict(boxstyle="round4",fc="0.8")
 arrow_args=dict(arrowstyle="<-")
@@ -11,6 +11,7 @@ def plotNode(nodeTxt,centerPt,parentPt,nodeType):
 	createPlot.ax1.annotate(nodeTxt,xy=parentPt,xycoords='axes fraction',xytext=centerPt,\
 		textcoords='axes fraction',va="center",ha="center",bbox=nodeType,arrowprops=arrow_args)
 
+#生成画板，在画板上画树
 def createPlot():
 	fig=plt.figure(1,facecolor='white')#figure第一个参数为图像框标题，第二个参数是背景颜色
 	fig.clf()
@@ -22,11 +23,13 @@ def createPlot():
 	plotTree(inTree,(0.5,1.0),'')
 	plt.show()
 
+#在父子节点间加文本信息
 def plotMidText(cntrPt,parentPt,txtString):
 	xMid=(parentPt[0]-cntrPt[0])/2.0+cntrPt[0]
 	yMid=(parentPt[1]-cntrPt[1])/2.0+cntrPt[1]
 	createPlot.ax1.text(xMid,yMid,txtString)
 
+#递归画树
 def plotTree(myTree,parentPt,nodeTxt):
 	numLeafs=getNumLeafs(myTree)
 	depth=getTreeDepth(myTree)
@@ -56,6 +59,7 @@ def getNumLeafs(myTree):
 		else:	numLeafs+=1
 	return numLeafs
 
+#获取树的深度
 def getTreeDepth(myTree):
 	maxDepth=0
 	firstStr=list(myTree.keys())[0]

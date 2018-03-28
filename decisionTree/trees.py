@@ -90,8 +90,39 @@ def createTree(dataSet,labels):
 		myTree[bestFeatLabel][value]=createTree(splitDataSet(dataSet,bestFeat,value),subLabels)   
 	return myTree   
 
+#测试算法：使用决策树执行分类
+def classify(inputTree,featLabels,testVec):
+	firstStr=list(inputTree.keys())[0]
+	secondDict=inputTree[firstStr]
+	featIndex=featLabels.index(firstStr)
+	for key in secondDict.keys():
+		if testVec[featIndex]==key:
+			if type(secondDict[key]).__name__=='dict':
+				classLabel=classify(secondDict[key],featLabels,testVec)
+			else: classLabel=secondDict[key]
+	return classLabel
+
+#存储树
+def storeTree(inputTree,filename):
+	import pickle
+	fw=open(filename,'wb+')#以二进制方式存储
+	pickle.dump(inputTree,fw)
+	fw.close()
+
+#读取树
+def grabTree(filename):
+	import pickle
+	fr=open(filename,'rb+')#以二进制方式读取
+	return pickle.load(fr)
+
 #主函数
 if __name__=='__main__': 
 	dataSet,labels=createDataSet()
 	myTree=createTree(dataSet,labels)
 	print(myTree)
+	dataSet,labels=createDataSet()
+	storeTree(myTree,'aaa.txt')
+	bbb=grabTree('aaa.txt')
+	print(bbb)
+	aaa=classify(myTree,labels,[1,1])#这里我们使用构造好了的决策树myTree,标签列表labels,需要预测的数据[1,1]
+	print(aaa)#打印预测出来的分类

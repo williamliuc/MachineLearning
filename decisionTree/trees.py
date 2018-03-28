@@ -125,4 +125,4 @@ if __name__=='__main__':
 	bbb=grabTree('aaa.txt')
 	print(bbb)
 	aaa=classify(myTree,labels,[1,1])#这里我们使用构造好了的决策树myTree,标签列表labels,需要预测的数据[1,1]
-	print(aaa)#打印预测出来的分类
+	print(aaa)#打印预测出来的分类 

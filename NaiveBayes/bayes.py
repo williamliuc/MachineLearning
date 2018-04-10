@@ -33,7 +33,7 @@ def trainNBO(trainMatrix,trainCategory):
 	print(pAbusive)
 	#p0Num=zeros(numWords);p1Num=zeros(numWords)#为了避免概率中0的出现导致最终所算的概率为0，我们将分子设为1，分母设为2
 	#p0Denom=0.0;p1Denom=0.0
-	p0Num=ones(numWords);p1Num=ones(numWords)
+	p0Num=ones(numWords);p1Num=ones(numWords) 
 	p0Denom=2.0;p1Denom=2.0
 	for i in range(numTrainDocs):
 		if trainCategory[i]==1:

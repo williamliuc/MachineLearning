@@ -1,3 +1,4 @@
+#使用朴素贝叶斯过滤垃圾邮件示例
 #coding: utf-8
 from numpy import *
 import re
@@ -27,6 +28,8 @@ def setOfWords2Vec(vocabList,inputSet):
 			returnVec[vocabList.index(word)]+=1#词袋模型
 		else: print("the word:",word,"is not in my vocabulary!")
 	return returnVec
+
+#朴素贝叶斯分类器训练函数
 def trainNBO(trainMatrix,trainCategory):
 	numTrainDocs=len(trainMatrix)
 	numWords=len(trainMatrix[0])
@@ -48,8 +51,9 @@ def trainNBO(trainMatrix,trainCategory):
 	#p0Vect=p0Num/p0Denom
 	p1Vect=log(p1Num/p1Denom)
 	p0Vect=log(p0Num/p0Denom)
-	return p0Vect,p1Vect,pAbusive
+	return p0Vect,p1Vect,pAbusive#返回两个向量概率和一个总的概率，p0Vect：词典中各个单词不是侮辱性词语的概率。
 
+#分类函数
 def classifyNB(vec2Classify,p0Vec,p1Vec,pClass1):
 	p1=sum(vec2Classify*p1Vec)+log(pClass1)
 	p0=sum(vec2Classify*p0Vec)+log(1.0-pClass1)
@@ -58,11 +62,14 @@ def classifyNB(vec2Classify,p0Vec,p1Vec,pClass1):
 	else:
 		return 0
 
+#准备数据：切分文本
 def textParse(bigString):
 	listOfTokens=re.split('\W',bigString)#分隔符是除单词，数字外的任意字符串
 	return [tok.lower() for tok in listOfTokens if len(tok)>2]#去掉空字符串，所有单词小写
 
+#过滤垃圾邮件示例代码
 def spamTest():
+	#导入并解析文本文件
 	docList=[];classList=[];fullText=[]
 	for i in range(1,26):
 		wordList=textParse(open('email/spam/%d.txt'%i).read())
@@ -73,7 +80,8 @@ def spamTest():
 		docList.append(wordList)
 		fullText.extend(wordList)
 		classList.append(0)
-
+	
+	#随机构建训练集
 	vocabList=createVocabList(docList)
 	trainingSet=list(range(50));testSet=[]
 	for i in range(10):
@@ -82,10 +90,14 @@ def spamTest():
 		del(trainingSet[randIndex])
 	trainMat=[];trainClasses=[]
 	print(len(trainingSet))
+	
+	#用贝叶斯算法训练训练集
 	for docIndex in trainingSet:
 		trainMat.append(setOfWords2Vec(vocabList,docList[docIndex]))
 		trainClasses.append(classList[docIndex])
 	p0v,p1v,pAb=trainNBO(trainMat,trainClasses)
+	
+	#对测试机进行预测
 	errorCount=0
 	for docIndex in testSet:
 		wordVector=setOfWords2Vec(vocabList,docList[docIndex])

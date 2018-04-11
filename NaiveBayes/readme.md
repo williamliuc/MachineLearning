@@ -1,7 +1,7 @@
          
 <h2 align="center">朴素贝叶斯的一般过程</h2></br>
 
-<font color="red">宽带缴费类库</font></br>
+<font color="#660000">宽带缴费类库</font></br>
 
 贝叶斯公式为
 

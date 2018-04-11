@@ -1,6 +1,6 @@
          
 <h2 align="center">朴素贝叶斯的一般过程</h2></br>
-<font color=#00ffff>宽带缴费类库</font></br>
+<font color=red>宽带缴费类库</font></br>
 贝叶斯公式为
 
 P(A∩B)=P(A)*P(B|A)=P(B)*P(A|B)

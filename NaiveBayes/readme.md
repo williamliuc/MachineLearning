@@ -1,4 +1,5 @@
-         
+         
+<h1 align="center">朴素贝叶斯的一般过程</h1>
 贝叶斯公式为
 
 P(A∩B)=P(A)*P(B|A)=P(B)*P(A|B)

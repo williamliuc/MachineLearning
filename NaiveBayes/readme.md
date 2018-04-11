@@ -1,5 +1,5 @@
          
-<h2 align="center" color=red>朴素贝叶斯的一般过程</h2></br>
+<h2 align="center" color="#dd0000">朴素贝叶斯的一般过程</h2></br>
 
 <font align="center">宽带缴费类库</font></br>
 

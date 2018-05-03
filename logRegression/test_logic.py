@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+ 
 import logic
 from numpy import *  
 import matplotlib.pyplot as plt  

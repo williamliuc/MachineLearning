@@ -23,6 +23,7 @@ def clipAlpha(aj,H,L):
         aj=L
     return aj
 
+#简化smo算法
 def smoSimple(dataMatIn,classLabels,C,toler,maxIter):
     dataMatrix=mat(dataMatIn);labelMat=mat(classLabels).transpose()
     b=0;m,n=shape(dataMatrix)

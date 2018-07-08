@@ -84,10 +84,8 @@ def smoSimple(dataMatIn,classLabels,C,toler,maxIter):
                 alphas[i]+=labelMat[j]*labelMat[i]*(alphaJold-alphas[j])
 
                 #对alpha[i]和alpha[j]进行优化之后，给这两个alpha值设置一个常数项b
-                b1=b-Ei-labelMat[i]*(alphas[i]-alphaIold)*dataMatrix[i,:]*dataMatrix[i,:].T-\
-                   labelMat[j]*(alphas[j]-alphaJold)*dataMatrix[i,:]*dataMatrix[j,:].T
-                b2=b-Ej-labelMat[i]*(alphas[i]-alphaIold)*dataMatrix[i,:]*dataMatrix[j,:].T-\
-                   labelMat[j]*(alphas[j]-alphaJold)*dataMatrix[j,:]*dataMatrix[j,:].T
+                b1=b-Ei-labelMat[i]*(alphas[i]-alphaIold)*dataMatrix[i,:]*dataMatrix[i,:].T-labelMat[j]*(alphas[j]-alphaJold)*dataMatrix[i,:]*dataMatrix[j,:].T
+                b2=b-Ej-labelMat[i]*(alphas[i]-alphaIold)*dataMatrix[i,:]*dataMatrix[j,:].T-labelMat[j]*(alphas[j]-alphaJold)*dataMatrix[j,:]*dataMatrix[j,:].T
                 if(0<alphas[i])and(C>alphas[i]): b=b1
                 elif(0<alphas[j])and(C>alphas[j]): b=b2
                 else: b=(b1+b2)/2.0
